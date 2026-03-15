@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulador Sorteo Libertadores</title>
+<title>Simulador Profesional Sorteo Libertadores</title>
 <style>
 body{font-family:Arial;background:#0b0b0b;color:white;text-align:center;margin:0}
 header{padding:20px;font-size:32px;font-weight:bold;color:#e3b341}
@@ -41,9 +41,9 @@ button:hover{opacity:0.9}
 
 <div class="controls">
 <button onclick="sortearPasoAPaso()">🎲 Sorteo paso a paso</button>
-
+<button onclick="simularCentral()">🧠 Probabilidad grupo Central</button>
 <button onclick="probabilidadRivales()">⚽ Probabilidad rivales Central</button>
-
+<button onclick="simular1000()">📊 Simular 1000</button>
 <button onclick="compartir()">📱 Compartir</button>
 </div>
 
@@ -62,28 +62,17 @@ button:hover{opacity:0.9}
 const flags={ARG:"🇦🇷",BRA:"🇧🇷",URU:"🇺🇾",ECU:"🇪🇨",PAR:"🇵🇾",COL:"🇨🇴",PER:"🇵🇪",BOL:"🇧🇴",CHI:"🇨🇱",VEN:"🇻🇪"}
 function flag(code){return flags[code]||"🏳️"}
 
-function logo(nombre){
-
 const logos={
-"Flamengo":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Flamengo.png",
-"Palmeiras":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Palmeiras.png",
-"Boca Juniors":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Boca%20Juniors.png",
-"Rosario Central":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Rosario%20Central.png",
-"Peñarol":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Penarol.png",
-"Nacional":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Nacional.png",
-"Fluminense":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Fluminense.png",
-"Corinthians":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Corinthians.png",
-"Cruzeiro":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Cruzeiro.png",
-"Lanús":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Lanus.png",
-"Estudiantes":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Estudiantes.png"
+"Flamengo":"https://upload.wikimedia.org/wikipedia/en/2/2e/Clube_de_Regatas_do_Flamengo_logo.svg",
+"Palmeiras":"https://upload.wikimedia.org/wikipedia/en/1/10/Palmeiras_logo.svg",
+"Boca Juniors":"https://upload.wikimedia.org/wikipedia/en/4/41/Boca_Juniors_logo18.svg",
+"Rosario Central":"https://upload.wikimedia.org/wikipedia/en/5/5e/Rosario_Central.svg",
+"Peñarol":"https://upload.wikimedia.org/wikipedia/en/3/3f/Club_Atl%C3%A9tico_Pe%C3%B1arol_logo.svg",
+"Nacional":"https://upload.wikimedia.org/wikipedia/en/3/35/Club_Nacional_de_Football_logo.svg"
 }
 
-return logos[nombre] || "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+function logo(nombre){return logos[nombre]||"https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"}
 
-}
-
-return "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
-}
 const flamengo={nombre:"Flamengo",pais:"BRA"}
 
 const bol1=[
@@ -150,17 +139,11 @@ return grupos
 
 function agregarEquipos(grupos,bol){
 bol=shuffle([...bol])
-
 bol.forEach(eq=>{
-let posibles=grupos.filter(g=>{
-let paises=g.map(t=>t.pais)
-return !paises.includes(eq.pais) && g.length<4
-})
-
-if(posibles.length>0){
-let elegido=posibles[Math.floor(Math.random()*posibles.length)]
-elegido.push(eq)
-}
+ for(let g of grupos){
+ let paises=g.map(t=>t.pais)
+ if(!paises.includes(eq.pais)&&g.length<4){g.push(eq);return}
+ }
 })
 }
 
