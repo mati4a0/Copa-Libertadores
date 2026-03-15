@@ -64,29 +64,22 @@ function flag(code){return flags[code]||"🏳️"}
 
 function logo(nombre){
 
-let id={
-"Flamengo":598,
-"Palmeiras":1903,
-"Boca Juniors":189,
-"Rosario Central":1037,
-"Peñarol":558,
-"Nacional":560,
-
-"Fluminense":1902,
-"Corinthians":1778,
-"Cruzeiro":1776,
-
-"Estudiantes":1068,
-"Lanús":1067,
-
-"Barcelona":1183,
-
-"Sporting Cristal":1213,
-"Universitario":1211
+const logos={
+"Flamengo":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Flamengo.png",
+"Palmeiras":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Palmeiras.png",
+"Boca Juniors":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Boca%20Juniors.png",
+"Rosario Central":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Rosario%20Central.png",
+"Peñarol":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Penarol.png",
+"Nacional":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Nacional.png",
+"Fluminense":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Fluminense.png",
+"Corinthians":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Corinthians.png",
+"Cruzeiro":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Cruzeiro.png",
+"Lanús":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Lanus.png",
+"Estudiantes":"https://raw.githubusercontent.com/wmira/football-logos/master/logos/Estudiantes.png"
 }
 
-if(id[nombre]){
-return "https://crests.football-data.org/"+id[nombre]+".png"
+return logos[nombre] || "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
+
 }
 
 return "https://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg"
