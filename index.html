@@ -139,11 +139,17 @@ return grupos
 
 function agregarEquipos(grupos,bol){
 bol=shuffle([...bol])
+
 bol.forEach(eq=>{
- for(let g of grupos){
- let paises=g.map(t=>t.pais)
- if(!paises.includes(eq.pais)&&g.length<4){g.push(eq);return}
- }
+let posibles=grupos.filter(g=>{
+let paises=g.map(t=>t.pais)
+return !paises.includes(eq.pais) && g.length<4
+})
+
+if(posibles.length>0){
+let elegido=posibles[Math.floor(Math.random()*posibles.length)]
+elegido.push(eq)
+}
 })
 }
 
