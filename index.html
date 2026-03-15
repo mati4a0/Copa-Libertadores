@@ -36,15 +36,16 @@ button:hover{opacity:0.9}
 </head>
 
 <body>
-<header>Simulador Profesional Sorteo Libertadores</header>
+<header>Simulador Sorteo Libertadores</header>
 <div class="container">
-
-<div class="controls">
-<button onclick="sortearPasoAPaso()">🎲 Sorteo paso a paso</button>
-<button onclick="simularCentral()">🧠 Probabilidad grupo Central</button>
-<button onclick="probabilidadRivales()">⚽ Probabilidad rivales Central</button>
-<button onclick="simular1000()">📊 Simular 1000</button>
-<button onclick="compartir()">📱 Compartir</button>
+  <div class="controls">
+    <button onclick="sortearPasoAPaso()">🎲 Sorteo paso a paso</button>
+    
+    <button onclick="simularCentral()" style="display: none;">🧠 Probabilidad grupo Central</button>
+    <button onclick="probabilidadRivales()" style="display: none;">⚽ Probabilidad rivales Central</button>
+    <button onclick="simular1000()" style="display: none;">📊 Simular 1000</button>
+    
+    <button onclick="compartir()">📱 Compartir</button>
 </div>
 
 <div class="drawBox" id="drawBox"></div>
